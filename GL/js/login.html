@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录注册</title>
+    <style>
+        *{margin: 0;padding: 0;list-style: none;}
+        body{background-color: #ececec;}
+        #box{
+            width: 1000px;
+            height: auto;
+            background-color: #fff;
+            margin: 100px auto;
+        }
+        .header{
+            width: 100%;
+            height: 45px;
+        }
+        .header li{
+            width: 150px;
+            height: 100%;
+            float: left;
+            text-align: center;
+            line-height: 45px;
+            font-weight: bold;
+            color: #747474;
+            margin-bottom: -2px;
+        }
+        #active{
+            background-color: #fff;
+            border-top: 2px #2daae4 solid;
+            border-left:1px solid #e8e8e8;
+            border-right:1px solid #e8e8e8;
+            border-bottom: 1px solid #fff;
+            color: #2daae4;
+            box-sizing: border-box;
+        }
+        .main{
+            width: 100%;
+            height: auto;
+        }
+        .user{
+            width: 100%;
+            height: auto;
+            padding-top: 50px;
+            box-sizing: border-box;
+            border: 1px solid #e8e8e8;
+            display: none;
+        }
+        .usermain{
+            width: 500px;
+            height: 100%;
+        }
+        .usermain p{
+            width:100%;
+            height: 50px;
+            line-height: 50px;
+            font-size: 13px;
+            color: #747474;
+            margin-bottom: 20px;
+        }
+        .usermain p span{
+            width: 170px;
+            height: 35px;
+            line-height: 35px;
+            text-align: right;
+            float: left;
+            padding-right: 10px;
+        }
+        .usermain p input{
+            width: 280px;
+            height: 40px;
+            border: 1px #ccc solid;
+            outline: none;
+            padding-left: 15px;
+            box-sizing: border-box;
+            float: left;
+        }
+        .usermain p:nth-of-type(4) input,.usermain p:nth-of-type(6) input{
+            width: 150px;
+        }
+        .usermain p:nth-of-type(4) button,.usermain p:nth-of-type(6) button{
+            margin-left: 10px;
+            width: 140px;
+            height: 40px;
+            background-color: #efefef;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul class="header">
+            <li id="active">用户注册</li>
+            <li>邮箱注册</li>
+        </ul>
+        <div class="main">
+            <!-- 此处的style里面的display: block;的意思是，刚打开页面的时候就让第一个注册方式显示出来 -->
+            <div class="user" style="display: block;">
+                <div class="usermain">
+                    <p>
+                        <span>手机：</span>
+                        <input type="tel" placeholder="请输入手机号">
+                    </p>
+                    <p>
+                        <span>请设置密码：</span>
+                        <input type="password" placeholder="请输入密码">
+                    </p>
+                    <p>
+                        <span>请确认密码：</span>
+                        <input type="password" placeholder="请再次输入密码">
+                    </p>
+                    <p>
+                        <span>手机验证码：</span>
+                        <input type="password" placeholder="请输入手机验证码">
+                        <button>获取短信验证码</button>
+                    </p>
+                </div>
+            </div>
+            <div class="user">
+                <div class="usermain">
+                    <p>
+                        <span>用户名：</span>
+                        <input type="text" placeholder="请输入用户名">
+                    </p>
+                    <p>
+                        <span>邮箱：</span>
+                        <input type="email" placeholder="请输入邮箱">
+                    </p>
+                    
+                    <p>
+                        <span>手机：</span>
+                        <input type="tel" placeholder="请输入手机号">
+                    </p>
+                    
+                    <p>
+                        <span>请设置密码：</span>
+                        <input type="password" placeholder="请输入密码">
+                    </p>
+                    <p>
+                        <span>请确认密码：</span>
+                        <input type="password" placeholder="请再次输入密码">
+                    </p>
+                    <p>
+                        <span>手机验证码：</span>
+                        <input type="password" placeholder="请输入手机验证码">
+                        <button>获取短信验证码</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var navs = document.querySelectorAll('li');
+        var users = document.querySelectorAll('.user');
+        for(var i=0;i<navs.length;i++){
+            // 添加一个index属性，方便操作
+            navs[i].index = i;
+            // 点击上面的注册按钮，切换注册方式
+            navs[i].onclick=function(){
+                // console.log(this.index);
+                for(var i=0;i<navs.length;i++){
+                    // 删除全部的id名，再重新添加
+                    navs[i].id = '';
+                    // 让全部的user盒子隐藏掉，实现点击哪一个，就让哪一个注册方式显示
+                    users[i].style.display = 'none';
+                }
+                // 重新添加的一个id名
+                this.id='active';
+                // 让你点击的那个注册方式显示出来
+                users[this.index].style.display = 'block';
+            }
+        }
+    
+    </script>
+</body>
+</html>
